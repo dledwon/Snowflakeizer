@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <title>Snowflakeizer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="app">
+  <h1>❄ Snowflakeizer ❄</h1>
+
+  <div class="mode-switch">
+    <button id="mode-no-input" class="active">Random Snowflake</button>
+    <button id="mode-with-input">Image2Snowflake</button>
+  </div>
+
+  <div class="panel">
+
+    <!-- INPUT IMAGE -->
+    <div id="input-section" class="hidden">
+      <label class="upload-box">
+        <input type="file" id="imageInput" accept="image/*">
+        <span>📂 Upload image</span>
+      </label>
+      <img id="inputPreview" class="preview hidden">
+    </div>
+
+    <!-- CONTROLS -->
+    <div class="controls">
+      <div>
+        Steps: <span id="stepsValue">30</span>
+        <input type="range" id="steps" min="1" max="100" value="30">
+      </div>
+
+      <div id="strength-wrapper" class="hidden">
+        Strength: <span id="strengthValue">0.7</span>
+        <input type="range" id="strength" min="0" max="0.99" step="0.01" value="0.7">
+      </div>
+    </div>
+
+    <button id="generate" class="generate">⛄ Generate</button>
+  </div>
+
+  <!-- OUTPUT -->
+  <div class="output">
+    <h2>Result</h2>
+    <div id="spinner" class="hidden">
+      <div class="loader"></div>
+        Generating...
+      </div>
+    <img id="outputImage" class="preview hidden">
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
