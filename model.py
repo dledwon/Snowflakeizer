@@ -1,3 +1,5 @@
+import os
+
 import torch
 from torchvision.utils import save_image
 from diffusers import AutoencoderKL, UNet2DModel, DDIMScheduler
@@ -9,6 +11,9 @@ import io
 import json
 import base64
 from pathlib import Path
+
+os.environ['CUDA_LAUNCH_BLOCKING'] = "1"
+os.environ['TORCH_USE_CUDA_DSA'] = "1"
 
 
 CONFIG_PATH = Path("config/config.json")
