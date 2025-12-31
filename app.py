@@ -23,7 +23,7 @@ def generate():
 
 
 @app.route("/api/img2img", methods=["POST"])
-def api_img2img():
+def img2img():
     if "image" not in request.files:
         return jsonify({"error": "No image provided"}), 400
 
@@ -41,4 +41,4 @@ def api_img2img():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
