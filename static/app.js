@@ -19,6 +19,11 @@ const outputImage = document.getElementById("outputImage");
 const imageInput = document.getElementById("imageInput");
 const inputPreview = document.getElementById("inputPreview");
 
+const seedToggle = document.getElementById("seedToggle");
+const seedInput = document.getElementById("seedValue");
+
+let seedEnabled = false;
+
 let currentMode = "no-input";
 
 /* --------- UI --------- */
@@ -61,6 +66,17 @@ function mockApi(endpoint, payload) {
   });
 }
 
+seedToggle.onclick = () => {
+  seedEnabled = !seedEnabled;
+
+  seedInput.disabled = !seedEnabled;
+  seedToggle.classList.toggle("active", seedEnabled);
+  seedToggle.classList.toggle("inactive", !seedEnabled);
+
+  seedToggle.textContent = seedEnabled ? "🎯 Fixed seed" : "🎲 Random";
+}
+
+
 /* --------- ACTIONS --------- */
 generateBtn.onclick = async () => {
   outputImage.classList.add("hidden");
@@ -75,9 +91,10 @@ generateBtn.onclick = async () => {
 };
 
 function generate_random(){
-    const stepsValue = steps.value;
+  const stepsValue = steps.value;
+  const seed = seedEnabled ? parseInt(seedInput.value) : 0;
 
-  fetch(`/api/generate?steps=${stepsValue}`)
+  fetch(`/api/generate?steps=${stepsValue}&seed=${seed}`)
     .then(res => {
       if (!res.ok) throw new Error("API error");
       return res.json();
@@ -100,6 +117,7 @@ function generate_img2img(){
   formData.append("image", imageInput.files[0]);
   formData.append("steps", steps.value);
   formData.append("strength", strength.value);
+  formData.append("seed", seedEnabled ? parseInt(seedInput.value) : 0);
 
   spinner.classList.remove("hidden"); // pokaż loader
 

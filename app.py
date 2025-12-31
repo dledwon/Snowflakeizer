@@ -17,7 +17,9 @@ def serve_static(path):
 @app.route("/api/generate", methods=["GET"])
 def generate():
     steps = request.args.get("steps", default=25, type=int)
-    image = generate_random(steps)
+    manual_seed = abs(request.args.get("seed", default=0, type=int))
+
+    image = generate_random(steps, manual_seed)
     img_b64 = images_to_base64(image)
     return jsonify({"image": img_b64})
 
@@ -30,9 +32,10 @@ def img2img():
     file = request.files["image"]
     steps = int(request.form.get("steps", 25))
     strength = float(request.form.get("strength", 0.7))
+    manual_seed = abs(request.form.get("seed", default=0, type=int))
 
     try:
-        image = generate_img2img(file, steps, strength)
+        image = generate_img2img(file, steps, strength, manual_seed)
         img_b64 = images_to_base64(image)
         return jsonify({"image": img_b64})
     except Exception as e:

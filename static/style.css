@@ -34,6 +34,9 @@ h1 {
   color: #aaa;
   cursor: pointer;
   border-radius: 6px;
+
+    /* border-radius: 10px; */
+  border: 1px solid rgba(255,255,255,0.25);
 }
 
 .mode-switch button.active {
@@ -134,3 +137,24 @@ pre {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+.seed-control {
+  display: flex;
+  justify-content: left;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+#seedValue {
+  width: 90px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: none;
+  background: rgba(255,255,255,0.15);
+  color: white;
+  font-size: 14px;
+}
+
+#seedValue:disabled {
+  opacity: 0.4;
+}  

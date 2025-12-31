@@ -58,7 +58,10 @@ unet_ema.eval()
 print("VAE + EMA UNet loaded")
 
 
-def generate_random(steps):
+def generate_random(steps, manual_seed=0):
+    if manual_seed != 0:
+        torch.manual_seed(manual_seed)
+
     scheduler = DDIMScheduler(
         num_train_timesteps=1000,
         beta_schedule="squaredcos_cap_v2",
@@ -78,7 +81,9 @@ def generate_random(steps):
     return image
 
 
-def generate_img2img(input_file, steps, strength):
+def generate_img2img(input_file, steps, strength, manual_seed=0):
+    if manual_seed != 0:
+        torch.manual_seed(manual_seed)
     transform = transforms.Compose([
         transforms.Resize((512, 512)),
         transforms.ToTensor(),
