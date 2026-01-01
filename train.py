@@ -34,11 +34,11 @@ class SnowflakeDataset(Dataset):
         self.files = [os.path.join(folder, f) for f in os.listdir(folder)]
         self.transform = transforms.Compose([
             transforms.Resize((size, size)),
-            # transforms.RandomAffine(
-            #     degrees=5,
-            #     translate=(0.05, 0.05),
-            #     scale=(0.9, 1.05)
-            # ),
+            transforms.RandomAffine(
+                degrees=10,
+                translate=(0.1, 0.1),
+                scale=(0.7, 1.05)
+            ),
             transforms.ToTensor(),
             transforms.Normalize(
                 [0.5, 0.5, 0.5],
@@ -57,8 +57,8 @@ class SnowflakeDataset(Dataset):
 CONFIG_PATH = Path("config/config.json")
 
 DEVICE = "cuda"
-EMA_DECAY = 0.995
-NUM_EPOCHS = 200
+EMA_DECAY = 0.999
+NUM_EPOCHS = 400
 LEARNING_RATE = 2e-5
 
 with open(CONFIG_PATH) as f:
@@ -168,11 +168,19 @@ for epoch in range(NUM_EPOCHS):
         )
         print(f"--> Current best model saved: {best_loss:.4f}")
 
-    if (epoch + 1) % 10 == 0:
-        torch.save(
-            {
-                # "unet": unet.state_dict(),
-                "ema": {n: p.clone() for n, p in ema_unet.named_parameters()}
-            },
-            Path.joinpath(MODEL_DIR, f"ema_epoch_{epoch + 1}.pt")
-        )
+    # if (epoch + 1) % 10 == 0:
+    #     torch.save(
+    #         {
+    #             # "unet": unet.state_dict(),
+    #             "ema": {n: p.clone() for n, p in ema_unet.named_parameters()}
+    #         },
+    #         Path.joinpath(MODEL_DIR, f"ema_epoch_{epoch + 1}.pt")
+    #     )
+
+torch.save(
+    {
+        # "unet": unet.state_dict(),
+        "ema": {n: p.clone() for n, p in ema_unet.named_parameters()}
+    },
+    Path.joinpath(MODEL_DIR, f"ema_final_{epoch + 1}.pt")
+)
