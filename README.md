@@ -30,3 +30,11 @@ pip install -r requirements.txt
 # Run the Flask application
 python app.py
 ```
+
+## Usage
+1. Open your browser and navigate to http://localhost:5000.
+2. Choose your mode: Random Snowflake or Image2Snowflake.
+3. Upload an image for Image2Snowflake mode.
+4. Toggle between Random and Fixed seed, set a constant seed number.
+5. Adjust generation parameters: number of steps and strength.
+6. Click Generate and view/download the resulting image.
