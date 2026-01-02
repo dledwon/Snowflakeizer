@@ -13,3 +13,20 @@ A web application for generating novel, synthetic snowflake images using an unco
 - PyTorch
 - 🤗 Diffusers
 - HTML / CSS / JavaScript for the frontend
+
+## Installation
+Follow these steps to set up **Snowflakeizer** locally:
+
+```bash
+# Clone the repository
+git clone https://github.com/dledwon/Snowflakeizer.git
+cd Snowflakeizer
+
+# Create and activate a virtual environment (e.g., venv, conda)
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the Flask application
+python app.py
+```
