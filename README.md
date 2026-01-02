@@ -17,7 +17,7 @@ The final model is hosted on **Hugging Face** and is downloaded automatically by
 ## Technologies
 - Python 3.10
 - Flask
-- PyTorch
+- PyTorch + CUDA
 - 🤗 Diffusers
 - HTML / CSS / JavaScript for the frontend
 
