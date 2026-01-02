@@ -8,22 +8,14 @@ from torchvision import transforms
 from PIL import Image
 
 import io
-import json
 import base64
-from pathlib import Path
 
 os.environ['CUDA_LAUNCH_BLOCKING'] = "1"
 os.environ['TORCH_USE_CUDA_DSA'] = "1"
 
-
-CONFIG_PATH = Path("config/config.json")
-
 DEVICE = "cuda"
 DTYPE = torch.float32
 LATENT_SCALE = 0.18215
-
-with open(CONFIG_PATH) as f:
-    config = json.load(f)
 
 print("Loading VAE and EMA UNet...")
 # VAE
@@ -34,27 +26,10 @@ vae.eval()
 vae.requires_grad_(False)
 
 # UNet EMA
-MODEL_PATH = Path(config["model_path"])
-ckpt = torch.load(
-    MODEL_PATH,
-    map_location="cpu"
-)
-
-unet_ema = UNet2DModel(
-    sample_size=64,
-    in_channels=4,
-    out_channels=4,
-    layers_per_block=2,
-    block_out_channels=(320, 640, 1280, 1280),
-    down_block_types=("DownBlock2D", "DownBlock2D", "DownBlock2D", "DownBlock2D"),
-    up_block_types=("UpBlock2D", "UpBlock2D", "UpBlock2D", "UpBlock2D"),
+unet_ema = UNet2DModel.from_pretrained(
+    "dledwon/latent-ddpm-unet-ema-snowflakes",
+    use_safetensors=True
 ).to(device=DEVICE, dtype=DTYPE)
-
-unet_ema.load_state_dict(
-    {k: v.to(device=DEVICE, dtype=DTYPE) for k, v in ckpt["ema"].items()}
-)
-unet_ema.eval()
-
 print("VAE + EMA UNet loaded")
 
 

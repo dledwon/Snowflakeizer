@@ -1,5 +1,4 @@
 {
   "train_data_dir": "/path/to/data",
-  "train_checkpoint_dir": "/path/to/train_checkpoints",
-  "model_path": "/path/to/model"
+  "train_checkpoint_dir": "/path/to/train_checkpoints"
 }
