@@ -50,16 +50,16 @@ python app.py
 
 ### Random Snowflake
 <p>
-  <img src="examples/seed102_steps53.png" width="18%"/>
-  <img src="examples/seed1222_steps22.png" width="18%"/>
-  <img src="examples/seed1223_steps53.png" width="18%"/>
-  <img src="examples/seed800_steps50.png" width="18%"/>
-  <img src="examples/seed888_steps43.png" width="18%"/>
+  <img src="examples/seed102_steps53.png" width="18%" alt="Generated snowflake"/>
+  <img src="examples/seed1222_steps22.png" width="18%" alt="Generated snowflake"/>
+  <img src="examples/seed1223_steps53.png" width="18%" alt="Generated snowflake"/>
+  <img src="examples/seed800_steps50.png" width="18%" alt="Generated snowflake"/>
+  <img src="examples/seed888_steps43.png" width="18%" alt="Generated snowflake"/>
 </p>
 
 ### Image2Snowflake
 Original image:  
-<img src="examples/brainbig.jpg" width="256px"/>
+<img src="examples/brainbig.jpg" width="256px" alt="Example input"/>
 
 Generated snowflake:  
-<img src="examples/brainbig_seed888_steps6_09.png" width="256px"/>
+<img src="examples/brainbig_seed888_steps6_09.png" width="256px"  alt="Generated snowflake based on example input"/>
