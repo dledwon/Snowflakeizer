@@ -1,5 +1,11 @@
 # ❄ Snowflakeizer ❄ 
-A web application for generating novel, synthetic snowflake images using an unconditional DDPM U-Net model. It can generate images from a random latent space or in image-to-image mode, producing snowflakes based on an encoded and noised input image. 
+A web application for generating novel, synthetic snowflake images using a custom unconditional DDPM U-Net model. It can generate images from a random latent space or in image-to-image mode, producing snowflakes based on an encoded and noised input image. 
+
+## About the Model
+Snowflakeizer utilizes a **custom, unconditional DDPM U-Net (EMA) trained from scratch** on snowflake photos dataset: ["Macro photos of real snowflakes" by Alexey Kljatov](https://www.flickr.com/photos/chaoticmind75/albums/72157702326145532/) (CC BY). 
+
+The model is stored on the Hugging Face repository and is downloaded directly from python code. 
+See [dledwon/latent-ddpm-unet-ema-snowflakes](https://huggingface.co/dledwon/latent-ddpm-unet-ema-snowflakes) for more details about the model.
 
 ## Features 
 - Generate unique snowflake images from random latents.
