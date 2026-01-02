@@ -45,3 +45,21 @@ python app.py
 4. Toggle between **Random** and **Fixed seed**, set a constant seed number.
 5. Adjust generation parameters: number of steps and strength.
 6. Click Generate and view/download the resulting image.
+
+## Examples
+
+### Random Snowflake
+<p>
+  <img src="examples/seed102_steps53.png" width="18%"/>
+  <img src="examples/seed1222_steps22.png" width="18%"/>
+  <img src="examples/seed1223_steps53.png" width="18%"/>
+  <img src="examples/seed800_steps50.png" width="18%"/>
+  <img src="examples/seed888_steps43.png" width="18%"/>
+</p>
+
+### Image2Snowflake
+Original image:  
+<img src="examples/brainbig.jpg" width="256px"/>
+
+Generated snowflake:  
+<img src="examples/brainbig_seed888_steps6_09.png" width="256px"/>
