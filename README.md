@@ -11,7 +11,7 @@ The final model is hosted on **Hugging Face** and is downloaded automatically by
 ## Features 
 - Generate unique snowflake images from random latents.
 - Image2Image mode: modify existing images to produce snowflake variations.
-- Web interface (API) built with Flask for easy interaction.
+- Web interface built with Flask for easy interaction.
 - Set a constant seed and modify parameters for controlling the output image.
 
 ## Technologies
