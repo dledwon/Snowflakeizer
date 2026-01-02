@@ -34,6 +34,9 @@ cd Snowflakeizer
 # Install dependencies
 pip install -r requirements.txt
 
+# Install PyTorch with proper CUDA
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cu{version}
+
 # Run the Flask application
 python app.py
 ```
